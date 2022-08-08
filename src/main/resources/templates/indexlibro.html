@@ -46,9 +46,9 @@
 							<td th:text="${libro.tipoLibro.tipoLibro}"></td>
 							<td th:text="${libro.editorial}"></td>
 							<td th:text="${libro.anyo}"></td>
-							<td><a th:href="@{/update/{id}(id=${libro.id})}"
+							<td><a th:href="@{/updatelibro/{id}(id=${libro.id})}"
 								class="btn btn-primary">Actualizar</a> <a
-								th:href="@{/delete/{id}(id=${libro.id})}"
+								th:href="@{/deletelibro/{id}(id=${libro.id})}"
 								class="btn btn-danger">Eliminar</a></td>
 						</tr>
 					</tbody>
@@ -60,19 +60,19 @@
 						<div class="col-sm-3">
 							<span th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
 								th:if="${currentPage != i}"
-								th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+								th:href="@{'/pagelibro/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
 								<span th:unless="${currentPage != i}">[[${i}]]</span>
 							</span>
 						</div>
 						<div class="col-sm-1">
 							<a th:if="${currentPage < totalPages}"
-								th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
-							<span th:unless="${currentPage < totalPages}">Proximo</span>
+								th:href="@{'/pagelibro/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Próximo</a>
+							<span th:unless="${currentPage < totalPages}">Próximo</span>
 						</div>
 						<div class="col-sm-1">
 							<a th:if="${currentPage < totalPages}"
-								th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
-							<span th:unless="${currentPage < totalPages}">Utlimo</span>
+								th:href="@{'/pagelibro/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Último</a>
+							<span th:unless="${currentPage < totalPages}">Último</span>
 						</div>
 					</div>
 				</div>
