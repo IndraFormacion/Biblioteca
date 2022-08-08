@@ -54,8 +54,8 @@ public class LibroServiceImpl implements LibroService{
 		}
 
 		@Override
-		public Page<Libro> findPaginated(int pageNum, int pageSize, String sortField, String editorial) {
-			Sort sort = editorial.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
+		public Page<Libro> findPaginated(int pageNum, int pageSize, String sortField, String sortDirection) {
+			Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
 					Sort.by(sortField).descending();
 
 			Pageable pageable = PageRequest.of(pageNum - 1, pageSize, sort);

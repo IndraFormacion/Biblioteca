@@ -81,6 +81,6 @@ public class LibroController {
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 
 		model.addAttribute("listLibros", listLibros);
-		return "index";
+		return "indexlibro";
 	}
 }
