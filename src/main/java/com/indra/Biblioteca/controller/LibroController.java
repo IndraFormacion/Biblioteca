@@ -27,7 +27,7 @@ public class LibroController {
 	@Autowired
 	private LibroService libroService;
 
-	@GetMapping("/")
+	@GetMapping("/hola")
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "titulo", "asc", model);
 	}
