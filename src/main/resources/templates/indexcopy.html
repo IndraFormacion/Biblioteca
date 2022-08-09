@@ -20,18 +20,24 @@
 		   ID</a>
 		</th>
 		<th>
-			<a th:href="@{'/page/' + ${currentPage} + '?sortField=estado&sortDir=' + ${reverseSortDir}}">
+			<a th:href="@{'/page/' + ${currentPage} + '?sortField=estadoCopia&sortDir=' + ${reverseSortDir}}">
 			Estado</a>		
+		</th>
+		<th>
+			<a th:href="@{'/page/' + ${currentPage} + '?sortField=libro&sortDir=' + ${reverseSortDir}}">
+			Título del libro</a>		
 		</th>
 		<th>Acciones</th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr th:each="copia: ${listCourses}">
-		<td th:text="${copia.estadoCopia}"></td>
+		<td th:text="${copia.id}"></td>
+		<td th:each="estadocopia: ${estcopia}" th:if="${estadocopia.id == copia.estadoCopia.id}" th:text="${estadocopia.copyStatus}"></td>
+		<td th:each="libros: ${libros}" th:if="${libros.id == copia.libro.id}" th:text="${libros.titulo}"></td>
 		<td>
-		<a th:href="@{/update/{id}(id=${copia.id})}" class="btn btn-primary">Actualizar</a>
-		<a th:href="@{/delete/{id}(id=${copia.id})}" class="btn btn-danger">Eliminar</a>
+		<a th:href="@{/updatecopia/{id}(id=${copia.id})}" class="btn btn-primary">Actualizar</a>
+		<a th:href="@{/deletecopia/{id}(id=${copia.id})}" class="btn btn-danger">Eliminar</a>
 		</td>
 		</tr>
 		</tbody>

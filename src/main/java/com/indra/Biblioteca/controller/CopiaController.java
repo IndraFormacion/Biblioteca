@@ -29,19 +29,30 @@ public class CopiaController {
 	@Autowired
 	private LibroService libroService;
 
-	@GetMapping("/")
+	@GetMapping("/a")
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "estadoCopia", "asc", model);
 	}
 	@PostMapping("/saveCopy")
-	public String saveCourse(@ModelAttribute("course") Copia copia) {
+	public String saveCopy(@ModelAttribute("copia") Copia copia) {
 		// save Course to database
 		copiaService.saveCopia(copia);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/updatecopia/{id}")
+	public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
 
+		List<EstadoCopia> estcopia = estadocopiaService.getAllCopia();
+		model.addAttribute("estcopia", estcopia);
+		List<Libro> libros = libroService.getAllLibros();
+		model.addAttribute("libros", libros);
+		Copia copia = copiaService.getCopiaById(id);
+		model.addAttribute("copia", copia);
+		return "update_copia";
+	}
 	@GetMapping("/addcopy")
-	public String showNewCourseForm(Model model) {
+	public String showNewCopiaForm(Model model) {
 		Copia Copia = new Copia();
 		model.addAttribute("copia", Copia);
 		List<EstadoCopia> estcopia = estadocopiaService.getAllCopia();
@@ -49,6 +60,12 @@ public class CopiaController {
 		List<Libro> libros = libroService.getAllLibros();
 		model.addAttribute("libros", libros);
 		return "new_copy";
+	}
+	@GetMapping("/deletecopia/{id}")
+	public String deleteCopia(@PathVariable (value = "id") long id) {
+
+		this.copiaService.deleteCopiaById(id);
+		return "redirect:/";
 	}
 	
 	@GetMapping("/page/{pageNo}")
@@ -69,6 +86,10 @@ public class CopiaController {
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 
+		List<EstadoCopia> estcopia = estadocopiaService.getAllCopia();
+		model.addAttribute("estcopia", estcopia);
+		List<Libro> libros = libroService.getAllLibros();
+		model.addAttribute("libros", libros);
 		model.addAttribute("listCourses", listCourses);
 		return "indexcopy";
 	}

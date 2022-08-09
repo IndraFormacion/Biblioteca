@@ -22,8 +22,8 @@ public class CopiaServiceCustomImpl implements CopiaService{
 	}
 
 	@Override
-	public void saveCopia(Copia course) {
-		this.copiaRepository.save(course);
+	public void saveCopia(Copia copia) {
+		this.copiaRepository.save(copia);
 	}
 
 	@Override
