@@ -40,11 +40,47 @@ public class Libro {
 	@Column(name="anyo")
 	private int anyo;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_autor")
+	private Autor autor;
+	
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
+	}
+
+	/**
+	 * @param id
+	 * @param titulo
+	 * @param tipoLibro
+	 * @param editorial
+	 * @param anyo
+	 * @param autor
+	 */
+	public Libro(Long id, String titulo, TipoLibro tipoLibro, String editorial, int anyo, Autor autor) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.tipoLibro = tipoLibro;
+		this.editorial = editorial;
+		this.anyo = anyo;
+		this.autor = autor;
+	}
+
+	/**
+	 * @return the autor
+	 */
+	public Autor getAutor() {
+		return autor;
+	}
+
+	/**
+	 * @param autor the autor to set
+	 */
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 
 	/**
