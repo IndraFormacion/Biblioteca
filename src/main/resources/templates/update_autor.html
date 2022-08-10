@@ -19,26 +19,24 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-				<h1>Gestion de Libros</h1>
+				<h1>Gestion de Autores</h1>
 				<hr>
-				<h2>Alta de Libros</h2>
+				<h2>Modificar Autor</h2>
 
-				<form action="#" th:action="@{/savelibro}" th:object="${libro}"
+
+				<form action="#" th:action="@{/saveautor}" th:object="${autor}"
 					method="POST">
-					<input type="text" th:field="*{titulo}"
-						placeholder="Titulo" class="form-control mb-4 col-4">
-
-					<input type="text" th:field="*{tipoLibro.tipoLibro}"
-						placeholder="Instructor Name" class="form-control mb-4 col-4">
-
-					<input type="text" th:field="*{editorial}" placeholder="Editorial"
+					<input type="hidden" th:field="*{id}"> <input type="text"
+						th:field="*{nombre}" placeholder="Nombre"
+						class="form-control mb-4 col-4"> <input type="text"
+						th:field="*{nacionalidad}" placeholder="Nacionalidad"
+						class="form-control mb-4 col-4"> <input type="date"
+						th:field="*{fechaNacimiento}" placeholder="Fecha Nacimiento"
 						class="form-control mb-4 col-4">
-						
-						<input type="text" th:field="*{anyo}" placeholder="Año"
-						class="form-control mb-4 col-4">
+
 
 					<button type="submit" class="btn btn-info col-2">Guardar
-						Libro</button>
+						Autor</button>
 				</form>
 
 				<hr>
