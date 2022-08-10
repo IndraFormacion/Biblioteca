@@ -17,12 +17,12 @@
 	<form action="#" th:action="@{/saveCopy}" th:object="${copia}"
 		method="POST">
 		<th>Estado</th>
-		<select th:field="*{estado}" class="form-control mb-4 col-4" >
-		<option th:each="estadocopia: ${estcopia}" th:text="${estadocopia.copyStatus}" value='th:text="${estadocopia.id}"'></option>
+		<select th:field="*{estadoCopia}" class="form-control mb-4 col-4" >
+		<option th:each="estadocopia: ${estcopia}" th:text="${estadocopia.copyStatus}" th:value="${estadocopia.id}"></option>
 		</select>
 		<th>Libro</th>
-		<select th:field="*{fk_libro}" class="form-control mb-4 col-4"  >
-		<option th:each="libros: ${libros}" th:text="${libros.titulo}" value='th:text="${libros.id}"'></option>
+		<select th:field="*{libro}" class="form-control mb-4 col-4"  >
+		<option th:each="libros: ${libros}" th:text="${libros.titulo}" th:value="${libros.id}"></option>
 		</select>
 		
 

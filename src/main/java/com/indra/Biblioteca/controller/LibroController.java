@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.indra.Biblioteca.model.Libro;
+import com.indra.Biblioteca.model.TipoLibro;
 import com.indra.Biblioteca.service.LibroService;
+import com.indra.Biblioteca.service.TipoLibroService;
 
 /**
  * @author aocarballo
@@ -26,8 +28,10 @@ import com.indra.Biblioteca.service.LibroService;
 public class LibroController {
 	@Autowired
 	private LibroService libroService;
+	@Autowired
+	private TipoLibroService tipoLibroService;
 
-	@GetMapping("/hola")
+	@GetMapping("/libro")
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "titulo", "asc", model);
 	}
@@ -36,6 +40,8 @@ public class LibroController {
 	public String showNewLibroForm(Model model) {
 		Libro Libro = new Libro();
 		model.addAttribute("libro", Libro);
+		List<TipoLibro> tipoLibroList = tipoLibroService.getAllTipoLibro();
+		model.addAttribute("tipoLibroList", tipoLibroList);
 		return "new_libro";
 	}
 

@@ -13,7 +13,7 @@
 	integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 	crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<title>Nuevo libro</title>
+<title>Actualizar libro</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -25,19 +25,16 @@
 
 				<form action="#" th:action="@{/savelibro}" th:object="${libro}"
 					method="POST">
-					<input type="text" th:field="*{titulo}" placeholder="Titulo"
-						class="form-control mb-4 col-4"> 
-						
-					<select
-						th:field="*{tipo}" class="form-control mb-4 col-4">
-						<option th:each="tipoLibro: ${tipoLibroList}"
-							th:text="${tipoLibro.tipoLibro}"
-							th:value="${tipoLibro.id}"></option>
-					</select> 
+					<input type="text" th:field="*{titulo}"
+						placeholder="Titulo" class="form-control mb-4 col-4">
+
+					<input type="text" th:field="*{tipoLibro.tipoLibro}"
+						placeholder="Instructor Name" class="form-control mb-4 col-4">
 
 					<input type="text" th:field="*{editorial}" placeholder="Editorial"
-						class="form-control mb-4 col-4"> <input type="text"
-						th:field="*{anyo}" placeholder="Año"
+						class="form-control mb-4 col-4">
+						
+						<input type="text" th:field="*{anyo}" placeholder="Año"
 						class="form-control mb-4 col-4">
 
 					<button type="submit" class="btn btn-info col-2">Guardar

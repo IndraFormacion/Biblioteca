@@ -32,7 +32,7 @@ public class Libro {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_tipoLibro")
-	private TipoLibro tipoLibro;
+	private TipoLibro tipo;
 	
 	@Column(name="editorial")
 	private String editorial;
@@ -43,44 +43,37 @@ public class Libro {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_autor")
 	private Autor autor;
-	
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
 
 	/**
 	 * @param id
 	 * @param titulo
-	 * @param tipoLibro
+	 * @param tipo
 	 * @param editorial
 	 * @param anyo
 	 * @param autor
 	 */
-	public Libro(Long id, String titulo, TipoLibro tipoLibro, String editorial, int anyo, Autor autor) {
+	public Libro(Long id, String titulo, TipoLibro tipo, String editorial, int anyo, Autor autor) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.tipoLibro = tipoLibro;
+		this.tipo = tipo;
 		this.editorial = editorial;
 		this.anyo = anyo;
 		this.autor = autor;
 	}
 
 	/**
-	 * @return the autor
+	 * 
 	 */
-	public Autor getAutor() {
-		return autor;
+	public Libro() {
+		super();
 	}
 
 	/**
-	 * @param autor the autor to set
+	 * @return the id
 	 */
-	public void setAutor(Autor autor) {
-		this.autor = autor;
+	public Long getId() {
+		return id;
 	}
 
 	/**
@@ -105,17 +98,17 @@ public class Libro {
 	}
 
 	/**
-	 * @return the tipoLibro
+	 * @return the tipo
 	 */
-	public TipoLibro getTipoLibro() {
-		return tipoLibro;
+	public TipoLibro getTipo() {
+		return tipo;
 	}
 
 	/**
-	 * @param tipoLibro the tipoLibro to set
+	 * @param tipo the tipo to set
 	 */
-	public void setTipoLibro(TipoLibro tipoLibro) {
-		this.tipoLibro = tipoLibro;
+	public void setTipo(TipoLibro tipo) {
+		this.tipo = tipo;
 	}
 
 	/**
@@ -147,26 +140,19 @@ public class Libro {
 	}
 
 	/**
-	 * @param id
-	 * @param titulo
-	 * @param tipoLibro
-	 * @param editorial
-	 * @param anyo
+	 * @return the autor
 	 */
-	public Libro(Long id, String titulo, TipoLibro tipoLibro, String editorial, int anyo) {
-		super();
-		this.id = id;
-		this.titulo = titulo;
-		this.tipoLibro = tipoLibro;
-		this.editorial = editorial;
-		this.anyo = anyo;
+	public Autor getAutor() {
+		return autor;
 	}
 
 	/**
-	 * 
+	 * @param autor the autor to set
 	 */
-	public Libro() {
-		super();
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
+	
+	
 	
 }
