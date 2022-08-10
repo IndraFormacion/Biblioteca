@@ -13,6 +13,7 @@
 <h1>Gestion de Cursos</h1>
 <h2>Actulizacion de Curso</h2>
 <form action="#" th:action="@{/saveCopy}" th:object="${copia}" method="post">
+<input type="hidden" th:field="*{id}">
 <th>Estado</th>
 		<select class="form-control mb-4 col-4" th:field="*{estadoCopia.id}">
 		<option th:each="estadocopia: ${estcopia}" th:value="${estadocopia.id}" th:text="${estadocopia.copyStatus}" ></option>

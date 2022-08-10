@@ -29,7 +29,7 @@ public class CopiaController {
 	@Autowired
 	private LibroService libroService;
 
-	@GetMapping("/a")
+	@GetMapping("/")
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "estadoCopia", "asc", model);
 	}
