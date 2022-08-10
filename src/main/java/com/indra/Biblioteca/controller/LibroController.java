@@ -49,7 +49,7 @@ public class LibroController {
 	public String saveLibro(@ModelAttribute("libro") Libro libro) {
 		// save Libro to database
 		libroService.saveLibro(libro);
-		return "redirect:/";
+		return "redirect:/libro";
 	}
 
 	@GetMapping("/updatelibro/{id}")
@@ -64,7 +64,7 @@ public class LibroController {
 	public String deleteLibro(@PathVariable (value = "id") long id) {
 
 		this.libroService.deleteLibroById(id);
-		return "redirect:/";
+		return "redirect:/libro";
 	}
 
 
