@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import lombok.*;
 
+
 @Entity
 @Table(name="Copia")
 public class Copia {

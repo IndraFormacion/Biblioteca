@@ -14,15 +14,24 @@
 	<hr>
 	<h2>Alta de Cursos</h2>
 
-	<form action="#" th:action="@{/saveCopy}" th:object="${copia}"
-		method="POST">
+	<form action="#" th:action="@{/saveCopy}" th:object="${copia}" method="POST">
 		<th>Estado</th>
+<<<<<<< HEAD
 		<select th:field="*{estadoCopia}" class="form-control mb-4 col-4" >
 		<option th:each="estadocopia: ${estcopia}" th:text="${estadocopia.copyStatus}" th:value="${estadocopia.id}"></option>
 		</select>
 		<th>Libro</th>
 		<select th:field="*{libro}" class="form-control mb-4 col-4"  >
 		<option th:each="libros: ${libros}" th:text="${libros.titulo}" th:value="${libros.id}"></option>
+=======
+		
+		<select class="form-control mb-4 col-4" th:field="*{estadoCopia.id}">
+		<option th:each="estadocopia: ${estcopia}" th:value="${estadocopia.id}" th:text="${estadocopia.copyStatus}" ></option>
+		</select>
+		<th>Libro</th>
+		<select class="form-control mb-4 col-4" th:field="*{libro.id}" >
+		<option th:each="libros: ${libros}" th:value="${libros.id}" th:text="${libros.titulo}"></option>
+>>>>>>> 8b36922ca8441747354131ab793e13116fc64c7b
 		</select>
 		
 

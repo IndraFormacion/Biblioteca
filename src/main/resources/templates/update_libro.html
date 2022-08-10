@@ -25,10 +25,11 @@
 
 				<form action="#" th:action="@{/savelibro}" th:object="${libro}"
 					method="POST">
+					<input type="hidden" th:field="*{id}">
 					<input type="text" th:field="*{titulo}"
 						placeholder="Titulo" class="form-control mb-4 col-4">
 
-					<input type="text" th:field="*{tipoLibro.tipoLibro}"
+					<input type="text" th:field="*{tipo}"
 						placeholder="Instructor Name" class="form-control mb-4 col-4">
 
 					<input type="text" th:field="*{editorial}" placeholder="Editorial"

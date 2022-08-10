@@ -8,7 +8,7 @@ import com.indra.Biblioteca.model.Copia;
 
 public interface CopiaService {
     List<Copia> getAllCopia();
-    void saveCopia(Copia copy);
+    void saveCopia(Copia copia);
     Copia getCopiaById(long id);
     void deleteCopiaById(long id);
     Page<Copia> findPaginated(int pageNum, int pageSize,
