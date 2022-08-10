@@ -16,10 +16,10 @@
 
 	<form action="#" th:action="@{/saveMulta}" th:object="${multa}"
 		method="POST">
-		<input type="text" th:field="*{fIncio}"
+		<input type="date" th:field="*{fIncio}"
 			placeholder="Fecha de inicio de la multa" class="form-control mb-4 col-4">
 
-		<input type="text" th:field="*{fFin}"
+		<input type="date" th:field="*{fFin}"
 			placeholder="Fecha de fin de la multa" class="form-control mb-4 col-4">
 
 		

@@ -12,19 +12,19 @@
 	<div>
 		<h1>Gestion de Multas</h1>
 		<h2>Actulizacion de Curso</h2>
-		<form action="#" th:action="@{/saveMultas}" th:object="${multa}"
-			method="post">
-			<input type="hidden" th:field="*{id}"> 
-			
-			<input type="text"
-				th:field="*{fIncio}" class="form-control mb-4 col-4"
-				placeholder="Fecha de inicio"> 
-				<input type="text"
-				th:field="*{fFin}" class="form-control mb-4 col-4"
-				placeholder="Fecha de fin"> 
-				
-			<button type="submit" class="btn btn-info col-2">Guardar</button>
-		</form>
+		<form action="#" th:action="@{/saveMulta}" th:object="${multa}"
+		method="POST">
+		<input type="hidden" th:field="*{id}"> 
+		<input type="date" th:field="*{fIncio}"
+			placeholder="Fecha de inicio de la multa" class="form-control mb-4 col-4">
+
+		<input type="date" th:field="*{fFin}"
+			placeholder="Fecha de fin de la multa" class="form-control mb-4 col-4">
+
+		
+
+		<button type="submit" class="btn btn-info col-2"> Guardar Multa</button>
+	
 		<hr>
 		<a th:href="@{/Multa}">Volver al listado</a>
 	</div>
