@@ -31,11 +31,7 @@ public class LibroController {
 	@Autowired
 	private TipoLibroService tipoLibroService;
 
-<<<<<<< HEAD
 	@GetMapping("/libro")
-=======
-	@GetMapping("/")
->>>>>>> 8b36922ca8441747354131ab793e13116fc64c7b
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "titulo", "asc", model);
 	}
