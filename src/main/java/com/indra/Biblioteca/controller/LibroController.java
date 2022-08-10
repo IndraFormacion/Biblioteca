@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.indra.Biblioteca.model.Libro;
+import com.indra.Biblioteca.model.TipoLibro;
 import com.indra.Biblioteca.service.LibroService;
+import com.indra.Biblioteca.service.TipoLibroService;
 
 /**
  * @author aocarballo
@@ -26,8 +28,14 @@ import com.indra.Biblioteca.service.LibroService;
 public class LibroController {
 	@Autowired
 	private LibroService libroService;
+	@Autowired
+	private TipoLibroService tipoLibroService;
 
+<<<<<<< HEAD
 	@GetMapping("/a")
+=======
+	@GetMapping("/libro")
+>>>>>>> 1684c5bd26e5251b187b5a1df31df463ec7f2135
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "titulo", "asc", model);
 	}
@@ -36,6 +44,8 @@ public class LibroController {
 	public String showNewLibroForm(Model model) {
 		Libro Libro = new Libro();
 		model.addAttribute("libro", Libro);
+		List<TipoLibro> tipoLibroList = tipoLibroService.getAllTipoLibro();
+		model.addAttribute("tipoLibroList", tipoLibroList);
 		return "new_libro";
 	}
 
@@ -43,7 +53,7 @@ public class LibroController {
 	public String saveLibro(@ModelAttribute("libro") Libro libro) {
 		// save Libro to database
 		libroService.saveLibro(libro);
-		return "redirect:/";
+		return "redirect:/libro";
 	}
 
 	@GetMapping("/updatelibro/{id}")
@@ -58,7 +68,7 @@ public class LibroController {
 	public String deleteLibro(@PathVariable (value = "id") long id) {
 
 		this.libroService.deleteLibroById(id);
-		return "redirect:/";
+		return "redirect:/libro";
 	}
 
 

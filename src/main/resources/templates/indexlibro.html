@@ -29,7 +29,7 @@
 								th:href="@{'/pagelibro/' + ${currentPage} + '?sortField=titulo&sortDir=' + ${reverseSortDir}}">
 									Titulo</a></th>
 							<th><a
-								th:href="@{'/pagelibro/' + ${currentPage} + '?sortField=tipoLibro&sortDir=' + ${reverseSortDir}}">
+								th:href="@{'/pagelibro/' + ${currentPage} + '?sortField=tipo&sortDir=' + ${reverseSortDir}}">
 									Tipo</a></th>
 							<th><a
 								th:href="@{'/pagelibro/' + ${currentPage} + '?sortField=editorial&sortDir=' + ${reverseSortDir}}">
@@ -43,7 +43,7 @@
 					<tbody>
 						<tr th:each="libro: ${listLibros}">
 							<td th:text="${libro.titulo}"></td>
-							<td th:text="${libro.tipoLibro.tipoLibro}"></td>
+							<td th:text="${libro.tipo.tipoLibro}"></td>
 							<td th:text="${libro.editorial}"></td>
 							<td th:text="${libro.anyo}"></td>
 							<td><a th:href="@{/updatelibro/{id}(id=${libro.id})}"
