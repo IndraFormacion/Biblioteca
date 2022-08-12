@@ -4,9 +4,12 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -20,7 +23,22 @@ public class Prestamo {
 	private Date inicio;
 	
 	@Column(name="fin")
-	private Date courseName;
+	private Date fin;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_lector")
+	private Lector lector;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_copia")
+	private Copia copia;
+
+	public Lector getLector() {
+		return lector;
+	}
+
+	public void setLector(Lector lector) {
+		this.lector = lector;
+	}
 
 	public Long getId() {
 		return id;
@@ -38,20 +56,30 @@ public class Prestamo {
 		this.inicio = inicio;
 	}
 
-	public Date getCourseName() {
-		return courseName;
+	public Date getFin() {
+		return fin;
 	}
 
-	public void setCourseName(Date courseName) {
-		this.courseName = courseName;
+	public void setFin(Date fin) {
+		this.fin = fin;
 	}
 
-	public Prestamo(Long id, Date inicio, Date courseName) {
+	public Prestamo(Long id, Date inicio, Date fin, Lector lector, Copia copia) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
-		this.courseName = courseName;
+		this.fin = fin;
+		this.lector = lector;
+		this.copia = copia;
 	}
+	public Copia getCopia() {
+		return copia;
+	}
+
+	public void setCopia(Copia copia) {
+		this.copia = copia;
+	}
+
 	public Prestamo() {
 		super();
 	}

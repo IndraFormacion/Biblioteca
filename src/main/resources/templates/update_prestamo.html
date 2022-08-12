@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Multas</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div>
+		<h1>Gestion de prestamos</h1>
+		<h2>Actulizacion de prestamo</h2>
+		<form action="#" th:action="@{/savePrestamo}" th:object="${prestamo}"
+		method="POST">
+		<input type="hidden" th:field="*{id}"> 
+		<input type="date" th:field="*{inicio}"
+			placeholder="Fecha de inicio del prestamo" class="form-control mb-4 col-4">
+
+		<input type="date" th:field="*{fin}"
+			placeholder="Fecha de fin del prestamo" class="form-control mb-4 col-4">
+
+		<th>Lector</th>
+		<select class="form-control mb-4 col-4" th:field="*{lector.nSocio}" >
+		<option th:each="lector: ${lector}" th:value="${lector.nSocio}" th:text="${lector.nombre}"></option>
+		</select>
+		<th>Título de la copia</th>
+		<select class="form-control mb-4 col-4" th:field="*{copia.id}" >
+		<option th:each="copias: ${copias}" th:value="${copias.id}" th:text="${copias.libro.titulo}"></option>
+		</select>
+		
+
+		<button type="submit" class="btn btn-info col-2"> Guardar prestamo</button>
+	
+		<hr>
+		<a th:href="@{/Multa}">Volver al listado</a>
+	</div>
+</body>
+</html>

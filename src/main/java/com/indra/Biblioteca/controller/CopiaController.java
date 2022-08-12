@@ -29,7 +29,7 @@ public class CopiaController {
 	@Autowired
 	private LibroService libroService;
 
-	@GetMapping("/")
+	@GetMapping("/copia")
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "estadoCopia", "asc", model);
 	}
@@ -68,7 +68,7 @@ public class CopiaController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/page/{pageNo}")
+	@GetMapping("/pageCopia/{pageNo}")
 	public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
 								@RequestParam("sortField") String sortField,
 								@RequestParam("sortDir") String sortDir,

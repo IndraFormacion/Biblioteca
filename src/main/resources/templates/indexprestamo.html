@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Prestamos</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="/">Home </a> <a
+                                class="nav-item nav-link" href="/copia">Copia</a> <a
+                                class="nav-item nav-link" href="/libro">Libro</a> <a
+                                class="nav-item nav-link" href="/autor">Autor</a> <a
+                                class="nav-item nav-link" href="/Multa">Multa</a> <a
+                                class="nav-item nav-link" href="/lector">Lector</a>
+                        </div>
+                    </div>
+                </nav>
+	<div class="container my-2">
+		<h1>Lista de Prestamos</h1>
+		<a th:href="@{/addPrestamo}" class="btn btn-primary btn-sm mb-3">Agregar prestamo</a>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th><a
+						th:href="@{'/pagePrestamo/' + ${currentPage} + '?sortField=&sortDiinicior=' + ${reverseSortDir}}">
+							Fecha de inicio del prestamo</a></th>
+					<th><a
+						th:href="@{'/pagePrestamo/' + ${currentPage} + '?sortField=fin&sortDir=' + ${reverseSortDir}}">
+							Fecha de fin del prestamo</a></th>
+					<th><a
+						th:href="@{'/pagePrestamo/' + ${currentPage} + '?sortField=lector&sortDir=' + ${reverseSortDir}}">
+							Lector</a></th>
+					<th><a
+						th:href="@{'/pagePrestamo/' + ${currentPage} + '?sortField=copia&sortDir=' + ${reverseSortDir}}">
+							Titulo de la copia</a></th>
+					
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="prestamo: ${listPrestamo}">
+					<td th:text="${prestamo.inicio}"></td>
+					<td th:text="${prestamo.fin}"></td>
+					<td th:text="${prestamo.lector.nombre}"></td>
+					 <td th:text="${prestamo.copia.libro.titulo}"></td>
+					  <td> <a th:href="@{/updatePrestamo/{id}(id=${prestamo.id})}"
+						class="btn btn-primary">Actualizar</a> <a
+						th:href="@{/deletePrestamo/{id}(id=${prestamo.id})}"
+						class="btn btn-danger">Eliminar</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div th:if="${totalPages >1}">
+			<div class="row col-sm-10">
+				<div class="col-sm-5">Total Rows: [[${totalItems}]]</div>
+				<div class="col-sm-3">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}"> <a
+						th:if="${currentPage != i}"
+						th:href="@{'/pageMulta/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>
+					</span>
+				</div>
+				<div class="col-sm-1">
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/pageMulta/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Proximo</a>
+					<span th:unless="${currentPage < totalPages}">Proxima</span>
+				</div>
+				<div class="col-sm-1">
+					<a th:if="${currentPage < totalPages}"
+						th:href="@{'/pageMulta/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Ultima</a>
+					<span th:unless="${currentPage < totalPages}">Ultima</span>
+				</div>
+			</div>
+
+
+		</div>
+</body>
+</html>
