@@ -1,6 +1,5 @@
 package com.indra.Biblioteca.controller;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,13 +59,17 @@ public class PrestamoController {
 	@PostMapping("/savePrestamo/")
 	public String savePrestamo(@ModelAttribute("prestamo") Prestamo prestamo) {
 		// save Prestamo to database
-		prestamoService.savePrestamo(prestamo);
+		
 		Copia copia = prestamo.getCopia();
 		EstadoCopia estcopia = estadocopiaService.getCopiaById(2);
-		Libro libro = copia.getLibro();
-		copia.setEstadoCopia(estcopia);
+		Copia copias = copiaService.getCopiaById(copia.getId());
+		
+		Libro libro = copias.getLibro();
 		copia.setLibro(libro);
+		copia.setEstadoCopia(estcopia);
 		copiaService.saveCopia(copia);
+		
+		prestamoService.savePrestamo(prestamo);
 		return "redirect:/";
 	}
 
@@ -98,7 +101,7 @@ public class PrestamoController {
 		this.prestamoService.deletePrestamoById(id);
 		
 		
-		return "redirect:/prestamo";
+		return "redirect:/";
 	}
 	
 	
