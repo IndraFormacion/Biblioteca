@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.indra.Biblioteca.model.Libro;
 import com.indra.Biblioteca.model.TipoLibro;
 
 /**
