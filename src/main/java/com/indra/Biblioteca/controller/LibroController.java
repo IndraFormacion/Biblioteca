@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.indra.Biblioteca.model.Autor;
 import com.indra.Biblioteca.model.Libro;
 import com.indra.Biblioteca.model.TipoLibro;
+import com.indra.Biblioteca.service.AutorService;
 import com.indra.Biblioteca.service.LibroService;
 import com.indra.Biblioteca.service.TipoLibroService;
 
@@ -30,8 +32,13 @@ public class LibroController {
 	private LibroService libroService;
 	@Autowired
 	private TipoLibroService tipoLibroService;
+	@Autowired
+	private AutorService autorService;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 09061d2168229237c9ffaf12c8fa0f5820ac97f0
 	@GetMapping("/libro")
 	public String viewHomePage(Model model) {
 		return findPaginated(1, "titulo", "asc", model);
@@ -43,6 +50,8 @@ public class LibroController {
 		model.addAttribute("libro", Libro);
 		List<TipoLibro> tipoLibroList = tipoLibroService.getAllTipoLibro();
 		model.addAttribute("tipoLibroList", tipoLibroList);
+		List<Autor> autorList = autorService.getAllAutor();
+		model.addAttribute("autorList", autorList);
 		return "new_libro";
 	}
 
@@ -58,6 +67,10 @@ public class LibroController {
 
 		Libro libro = libroService.getLibroById(id);
 		model.addAttribute("libro", libro);
+		List<TipoLibro> tipoLibroList = tipoLibroService.getAllTipoLibro();
+		model.addAttribute("tipoLibroList", tipoLibroList);
+		List<Autor> autorList = autorService.getAllAutor();
+		model.addAttribute("autorList", autorList);
 		return "update_libro";
 	}
 
